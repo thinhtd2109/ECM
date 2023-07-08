@@ -1,5 +1,7 @@
 import { Pool, QueryConfig, QueryResult } from 'pg';
+import { Service } from 'typedi';
 
+@Service()
 class Database {
     private pool: Pool;
 
