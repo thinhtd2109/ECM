@@ -1,10 +1,12 @@
-import { DIContainer } from "../../config/DIContainer";
+import { Inject, Service } from "typedi";
 import { ProductGateway } from "./product.gateway";
 
+
+@Service()
 export class ProductService {
     private productGateway: ProductGateway;
-    constructor() {
-        this.productGateway = DIContainer.instance.resolve<ProductGateway>('productGateway');
+    constructor(@Inject() productGateway: ProductGateway) {
+        this.productGateway = productGateway;
     }
     async getProductById(id: string): Promise<any> {
         return await this.productGateway.getProductById(id)

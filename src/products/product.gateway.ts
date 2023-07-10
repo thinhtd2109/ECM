@@ -1,11 +1,8 @@
-import { DIContainer } from "../../config/DIContainer";
-import Database from "../../config/database";
+import { Service } from "typedi";
 
+@Service()
 export class ProductGateway {
-    private _databaseService: Database;
-    constructor() {
-        this._databaseService = DIContainer.instance.resolve<Database>('databaseService');
-    }
+    constructor() { }
     async getProductById(productId: string) {
         return {
             name: 'John Doe',

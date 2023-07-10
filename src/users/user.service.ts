@@ -9,7 +9,13 @@ export class UserService {
     constructor(@Inject() databaseService: Database) {
         this.databaseService = databaseService;
     }
-    getUsers(id: any) { };
+    getUsers() {
+        return {
+            id: '12',
+            age: 16,
+            name: 'John Doe'
+        }
+    };
 
     async register(data: RegisterUserDto) {
         const existEmail = await this.databaseService.queryWithFilter('users', [
@@ -26,7 +32,10 @@ export class UserService {
             return { status: false, error: `Thông tin username người dùng đã tồn tại, kiểm tra lại`, data: null }
         }
 
-
-        return { test: "test" };
+        return {
+            error: null,
+            data: null,
+            status: true
+        }
     }
 }
